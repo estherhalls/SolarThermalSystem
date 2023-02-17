@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eqc-FZ-uoO">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Solar Thermal System-->
+        <scene sceneID="uHV-B8-Ra1">
+            <objects>
+                <viewController id="Nes-fx-wKm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PpP-hZ-hUR">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="mjT-6S-sWn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Solar Thermal System" id="IwU-Xt-TTf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AwX-nQ-OwB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-431" y="1282"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="G7s-o4-6HV">
+            <objects>
+                <tabBarController id="Eqc-FZ-uoO" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eWw-gc-B8B">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="leF-rh-InD" kind="relationship" relationship="viewControllers" id="86r-Sq-3V4"/>
+                        <segue destination="N51-u9-Nm6" kind="relationship" relationship="viewControllers" id="P5e-5r-gGi"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6f7-Qq-PpH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="266" y="-146"/>
+        </scene>
+        <!--Simulator-->
+        <scene sceneID="8so-Sh-Fhs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="leF-rh-InD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Simulator" image="sun.and.horizon.fill" catalog="system" id="Xk1-zt-kgZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hml-Kc-aDa">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Nes-fx-wKm" kind="relationship" relationship="rootViewController" id="I9U-hd-hY4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9an-N7-0S1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-431.29770992366412" y="542.95774647887322"/>
+        </scene>
+        <!--FormulaResources-->
+        <scene sceneID="RBq-kU-K6o">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FormulaResources" id="N51-u9-Nm6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="zbz-QB-vEq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rIp-Qc-qn3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935" y="542"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="sun.and.horizon.fill" catalog="system" width="128" height="79"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
