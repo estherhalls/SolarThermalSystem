@@ -41,6 +41,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB347AEC29A01888004E2CDD /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */,
+			);
+			path = Simulator;
+			sourceTree = "<group>";
+		};
+		EB347AED29A01890004E2CDD /* Formula Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */,
+			);
+			path = "Formula Resources";
+			sourceTree = "<group>";
+		};
 		EB769C08299EE4B70094CDD0 = {
 			isa = PBXGroup;
 			children = (
@@ -61,8 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				EB769C1A299EE4B70094CDD0 /* Main.storyboard */,
-				EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */,
-				EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */,
+				EB347AEC29A01888004E2CDD /* Simulator */,
+				EB347AED29A01890004E2CDD /* Formula Resources */,
 				EB769C28299EE76A0094CDD0 /* Resources */,
 				EB769C29299EEE720094CDD0 /* ThermalSystem.swift */,
 			);
