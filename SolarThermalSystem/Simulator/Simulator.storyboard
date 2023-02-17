@@ -5,24 +5,105 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Solar Thermal System-->
         <scene sceneID="uHV-B8-Ra1">
             <objects>
-                <viewController id="Nes-fx-wKm" sceneMemberID="viewController">
+                <viewController id="Nes-fx-wKm" customClass="SimulatorViewController" customModule="SolarThermalSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PpP-hZ-hUR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun.and.horizon" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="70C-8x-IMp">
+                                <rect key="frame" x="15" y="100" width="363" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="70C-8x-IMp" secondAttribute="height" multiplier="150:80" id="93T-yH-M7z"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JLi-ka-y1q">
+                                <rect key="frame" x="15" y="314" width="363" height="108.66666666666667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collector" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywa-Nd-VKC">
+                                        <rect key="frame" x="0.0" y="0.0" width="81.666666666666671" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NsG-MG-5Og">
+                                        <rect key="frame" x="0.0" y="32" width="363" height="34.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Panel Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrX-Rr-caD">
+                                                <rect key="frame" x="0.0" y="0.0" width="88" height="34.333333333333336"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v77-iM-Jjr">
+                                                <rect key="frame" x="118" y="0.0" width="245" height="34.333333333333336"/>
+                                                <menu key="menu" id="3dB-NS-zE5">
+                                                    <children>
+                                                        <command title="Item 1" id="QSF-0L-cyc"/>
+                                                        <command title="Item 2" id="DbI-bF-UI6"/>
+                                                    </children>
+                                                </menu>
+                                                <state key="normal" image="chevron.compact.down" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="tinted"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="iFv-ni-MiL">
+                                        <rect key="frame" x="0.0" y="74.333333333333329" width="363" height="34.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tilt:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zY3-Es-3MD">
+                                                <rect key="frame" x="0.0" y="0.0" width="88" height="34.333333333333336"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sRz-nS-Hfg">
+                                                <rect key="frame" x="118" y="0.0" width="245" height="34.333333333333336"/>
+                                                <menu key="menu" id="tc5-1r-nvj">
+                                                    <children>
+                                                        <command title="Item 1" id="kHE-7Z-Whx"/>
+                                                        <command title="Item 2" id="iPR-Zj-NgB"/>
+                                                    </children>
+                                                </menu>
+                                                <state key="normal" image="chevron.compact.down" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="tinted"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sRz-nS-Hfg" firstAttribute="trailing" secondItem="v77-iM-Jjr" secondAttribute="trailing" id="InG-Tt-nnX"/>
+                                    <constraint firstItem="sRz-nS-Hfg" firstAttribute="leading" secondItem="v77-iM-Jjr" secondAttribute="leading" id="WUs-mN-GYa"/>
+                                    <constraint firstAttribute="trailing" secondItem="NsG-MG-5Og" secondAttribute="trailing" id="e3I-Ti-4hh"/>
+                                    <constraint firstItem="NsG-MG-5Og" firstAttribute="leading" secondItem="JLi-ka-y1q" secondAttribute="leading" id="phc-RP-XpL"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="mjT-6S-sWn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="70C-8x-IMp" firstAttribute="leading" secondItem="mjT-6S-sWn" secondAttribute="leading" constant="15" id="CLh-we-335"/>
+                            <constraint firstItem="mjT-6S-sWn" firstAttribute="trailing" secondItem="JLi-ka-y1q" secondAttribute="trailing" constant="15" id="EEv-il-dHJ"/>
+                            <constraint firstItem="JLi-ka-y1q" firstAttribute="leading" secondItem="mjT-6S-sWn" secondAttribute="leading" constant="15" id="Mn8-P2-4Kd"/>
+                            <constraint firstItem="mjT-6S-sWn" firstAttribute="top" secondItem="70C-8x-IMp" secondAttribute="top" constant="5" id="YPt-D1-am6"/>
+                            <constraint firstItem="mjT-6S-sWn" firstAttribute="trailing" secondItem="70C-8x-IMp" secondAttribute="trailing" constant="15" id="jHf-3k-KEf"/>
+                            <constraint firstItem="70C-8x-IMp" firstAttribute="centerX" secondItem="mjT-6S-sWn" secondAttribute="centerX" id="jOB-zD-sDH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Solar Thermal System" id="IwU-Xt-TTf"/>
+                    <connections>
+                        <outlet property="collectorTypePopupButton" destination="v77-iM-Jjr" id="akH-xb-FVn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AwX-nQ-OwB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="387" y="542"/>
+            <point key="canvasLocation" x="385.49618320610688" y="541.54929577464793"/>
         </scene>
         <!--Simulator-->
         <scene sceneID="8so-Sh-Fhs">
@@ -45,6 +126,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.compact.down" catalog="system" width="128" height="42"/>
+        <image name="sun.and.horizon" catalog="system" width="128" height="79"/>
         <image name="sun.and.horizon.fill" catalog="system" width="128" height="79"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -27,8 +27,10 @@ struct ThermalSystem {
     
 }
 
-/// STC (standard test conditions):
-/// radiation = 1000 W/m^2
-/// cellTemp = 25 deg C
-/// windSpeed = 1m/s
-/// airMass = 1.5
+/*
+STC (standard test conditions):
+radiation = 1000 W/m^2
+cellTemp = 25 deg C
+windSpeed = 1m/s
+airMass = 1.5
+*/
