@@ -41,6 +41,9 @@ class SimulatorViewController: UIViewController {
         }
         // Initial Menus Setup
         setupCollectorType()
+        setupCollectorTilt()
+        setupCollectorOrientation()
+        setupOvershading()
     }
     
     // MARK: - Methods
@@ -55,6 +58,45 @@ class SimulatorViewController: UIViewController {
         ])
         collectorTypePopupButton.showsMenuAsPrimaryAction = true
         collectorTypePopupButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    func setupCollectorTilt(){
+        let optionClosure = { (action: UIAction) in
+            print(action.title)}
+        
+        collectorTiltPopupButton.menu = UIMenu(children : [
+            UIAction(title: "option 1", state: .on, handler: optionClosure),
+            UIAction(title: "option 2", handler: optionClosure),
+            UIAction(title: "option 3", handler: optionClosure)
+        ])
+        collectorTiltPopupButton.showsMenuAsPrimaryAction = true
+        collectorTiltPopupButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    func setupCollectorOrientation(){
+        let optionClosure = { (action: UIAction) in
+            print(action.title)}
+        
+        collectorOrientationPopupButton.menu = UIMenu(children : [
+            UIAction(title: "option 1", state: .on, handler: optionClosure),
+            UIAction(title: "option 2", handler: optionClosure),
+            UIAction(title: "option 3", handler: optionClosure)
+        ])
+        collectorOrientationPopupButton.showsMenuAsPrimaryAction = true
+        collectorOrientationPopupButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    func setupOvershading(){
+        let optionClosure = { (action: UIAction) in
+            print(action.title)}
+        
+        overshadingPopupButton.menu = UIMenu(children : [
+            UIAction(title: "option 1", state: .on, handler: optionClosure),
+            UIAction(title: "option 2", handler: optionClosure),
+            UIAction(title: "option 3", handler: optionClosure)
+        ])
+        overshadingPopupButton.showsMenuAsPrimaryAction = true
+        overshadingPopupButton.changesSelectionAsPrimaryAction = true
     }
     
     /*
