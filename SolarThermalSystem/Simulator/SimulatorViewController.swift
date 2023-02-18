@@ -21,6 +21,7 @@ class SimulatorViewController: UIViewController {
     @IBOutlet weak var systemImageView: UIImageView!
     @IBOutlet weak var backgroundView: UIView!
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +49,9 @@ class SimulatorViewController: UIViewController {
     }
     
     // MARK: - Methods
+    /// Each method that deals with user input values needs to conclude by assigning that value to the model variables that will be accessed in the "run simulator" function
     func setupCollectorType(){
+        /// Collector type assigned will also determine the collectorEfficiency, the linear heat loss coefficient (used in function that assigns collectorPerformanceFactor), and ratio of aperture area to gross area (which will be multiplied by the dimensions provided by the user)
         let optionClosure = { (action: UIAction) in
             print(action.title)}
         
@@ -62,6 +65,7 @@ class SimulatorViewController: UIViewController {
     }
     
     func setupCollectorTilt(){
+        /// Tilt and orientation are used together in an array to determine the annual solar radiation kWh/m2
         let optionClosure = { (action: UIAction) in
             print(action.title)}
         
@@ -99,15 +103,5 @@ class SimulatorViewController: UIViewController {
         overshadingPopupButton.showsMenuAsPrimaryAction = true
         overshadingPopupButton.changesSelectionAsPrimaryAction = true
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-}
+ 
+} // End of Class
