@@ -10,6 +10,13 @@ import UIKit
 class SimulatorViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var collectorTypePopupButton: UIButton!
+    @IBOutlet weak var collectorTiltPopupButton: UIButton!
+    @IBOutlet weak var collectorOrientationPopupButton: UIButton!
+    @IBOutlet weak var collectorWidthTextField: UITextField!
+    @IBOutlet weak var collectorHeightTextField: UITextField!
+    @IBOutlet weak var overshadingPopupButton: UIButton!
+    @IBOutlet weak var tankVolumeTextField: UITextField!
+    @IBOutlet weak var hotWaterDemandTextField: UITextField!
     @IBOutlet weak var systemImageView: UIImageView!
     @IBOutlet weak var backgroundView: UIView!
     
@@ -27,6 +34,7 @@ class SimulatorViewController: UIViewController {
         /// Apply the gradient to the backgroundGradient UIView
         backgroundView.layer.insertSublayer(gradientLayer, at: 0)
         
+        // Simulation Image
         let image = UIImage(named: "solarImage")
         DispatchQueue.main.async {
             self.systemImageView.image = image
