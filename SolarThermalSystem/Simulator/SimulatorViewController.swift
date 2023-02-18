@@ -17,6 +17,7 @@ class SimulatorViewController: UIViewController {
     @IBOutlet weak var overshadingPopupButton: UIButton!
     @IBOutlet weak var tankVolumeTextField: UITextField!
     @IBOutlet weak var hotWaterDemandTextField: UITextField!
+    @IBOutlet weak var runSimulationButton: UIButton!
     @IBOutlet weak var systemImageView: UIImageView!
     @IBOutlet weak var backgroundView: UIView!
     
