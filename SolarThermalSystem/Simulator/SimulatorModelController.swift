@@ -24,6 +24,7 @@ class SimulatorModelController {
     var annualRadiation: Int?
     var solarInput: Int? // result of solar contribution formula
     var overshadingFactor: Double? // Factor associated with user assigned shading quantity
+    var tankVolume: Double?
     
     // Computed Properties that will be used as terms for expressions in solar contribution and heat transfer formulas
     var collectorApertureArea: Double? // collectorHeight * collectorWidth * ratio
@@ -33,6 +34,7 @@ class SimulatorModelController {
     var solarStorageVolFactor: Double? // 1 + 0.2 x ln(effectiveSolarVolume/dailyHotH20) (not to exceed 1.0)
     
     // MARK: - Methods
+
     func setCollectorType(with name: String) {
         collectorType = name
         print(collectorType!)

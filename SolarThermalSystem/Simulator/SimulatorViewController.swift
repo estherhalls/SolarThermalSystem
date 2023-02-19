@@ -57,6 +57,33 @@ class SimulatorViewController: UIViewController {
 
     // MARK: - Methods
     /// Each method that deals with user input values needs to conclude by assigning that value to the model variables that will be accessed in the "run simulator" function
+    func setTextFields() {
+        if let height = collectorHeightTextField.text, let value = Double(height) {
+            viewModel.collectorHeight = value
+            print(viewModel.collectorHeight!)
+        } else {
+            print("Missing Height Text Field")
+        }
+        if let width = collectorWidthTextField.text, let value = Double(width) {
+            viewModel.collectorWidth = value
+            print(viewModel.collectorWidth!)
+        } else {
+            print("Missing Width Text Field")
+        }
+        if let tank = tankVolumeTextField.text, let value = Double(tank) {
+            viewModel.tankVolume = value
+            print(viewModel.tankVolume!)
+        } else {
+            print("Missing Tank Volume Text Field")
+        }
+        if let h20Demand = hotWaterDemandTextField.text, let value = Double(h20Demand) {
+            viewModel.dailyHotH20 = value
+            print(viewModel.dailyHotH20!)
+        } else {
+            print("Missing H20 Demand Text Field")
+        }
+    }
+    
     func setupCollectorType() {
         /// Collector type assigned will also determine the collectorEfficiency, the linear heat loss coefficient (used in function that assigns collectorPerformanceFactor), and ratio of aperture area to gross area (which will be multiplied by the dimensions provided by the user)
         ///
@@ -176,6 +203,9 @@ class SimulatorViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func runSimulationTapped(_ sender: Any) {
+        // First assign text fields to global properties
+       setTextFields()
+   
         // final daily heat transfer and solar input formulas
         // Case success, populate labels. Case failure, alert to check all fields for data.
     }
