@@ -17,13 +17,13 @@ class SimulatorViewController: UIViewController {
     @IBOutlet weak var overshadingPopupButton: UIButton!
     @IBOutlet weak var tankVolumeTextField: UITextField!
     @IBOutlet weak var hotWaterDemandTextField: UITextField!
-    @IBOutlet weak var runSimulationButton: UIButton!
     @IBOutlet weak var systemImageView: UIImageView!
     @IBOutlet weak var backgroundView: UIView!
     
     
     // MARK: - Properties
-    let thermalSystem = ThermalSystem.shared
+    // Initialize Model Properties
+    var thermalSystem = ThermalSystem.shared
     let dataSource = SystemDataSource()
     
     // MARK: - Lifecycle
@@ -55,10 +55,11 @@ class SimulatorViewController: UIViewController {
     
     // MARK: - Methods
     /// Each method that deals with user input values needs to conclude by assigning that value to the model variables that will be accessed in the "run simulator" function
-    func setupCollectorType(){
+    func setupCollectorType() {
         /// Collector type assigned will also determine the collectorEfficiency, the linear heat loss coefficient (used in function that assigns collectorPerformanceFactor), and ratio of aperture area to gross area (which will be multiplied by the dimensions provided by the user)
         ///
         let optionClosure = { (action: UIAction) in
+            self.thermalSystem.setCollectorType(with: action.title)
             print(action.title)
         }
         var optionsArray = [UIAction]()
@@ -76,7 +77,7 @@ class SimulatorViewController: UIViewController {
         optionsArray[0].state = .on
         
         /// Create options menu
-        let optionsMenu = UIMenu(title: "", options: .displayInline, children: optionsArray)
+        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
         
         /// Add menu to button
         collectorTypePopupButton.menu = optionsMenu
@@ -84,14 +85,16 @@ class SimulatorViewController: UIViewController {
         collectorTypePopupButton.changesSelectionAsPrimaryAction = true
     }
     
-    func setupCollectorTilt(){
+    func setupCollectorTilt() {
         /// Tilt and orientation are used together in an array to determine the annual solar radiation kWh/m2
         let optionClosure = { (action: UIAction) in
+            self.thermalSystem.setCollectorTilt(with: action.title)
             print(action.title)
         }
         var optionsArray = [UIAction]()
         
         let tiltData = dataSource.annualRadiationCalc.map { $0[0] }
+//        let tiltArray = tiltData[1..<tiltData.count]
         
         for tilt in tiltData {
             /// Create action with type as title
@@ -112,33 +115,85 @@ class SimulatorViewController: UIViewController {
         collectorTiltPopupButton.changesSelectionAsPrimaryAction = true
     }
     
-    func setupCollectorOrientation(){
+    func setupCollectorOrientation() {
         let optionClosure = { (action: UIAction) in
+            self.thermalSystem.setCollectorOrientation(with: action.title)
             print(action.title)}
         
-        collectorOrientationPopupButton.menu = UIMenu(children : [
-            UIAction(title: "option 1", state: .on, handler: optionClosure),
-            UIAction(title: "option 2", handler: optionClosure),
-            UIAction(title: "option 3", handler: optionClosure)
-        ])
+        var optionsArray = [UIAction]()
+        
+        let orientationData = dataSource.annualRadiationCalc
+        let orientationArray = orientationData[0]
+        let directionArray = orientationArray[1..<orientationArray.count]
+        for direction in directionArray {
+            /// Create action with type as title
+            let action = UIAction(title: direction as! String, state: .off, handler: optionClosure)
+            
+            /// Add new action to the options array
+            optionsArray.append(action)
+        }
+        /// Set the first option state to on
+        optionsArray[0].state = .on
+        
+        /// Create options menu
+        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
+        
+        /// Add menu to button
+        collectorOrientationPopupButton.menu = optionsMenu
         collectorOrientationPopupButton.showsMenuAsPrimaryAction = true
         collectorOrientationPopupButton.changesSelectionAsPrimaryAction = true
     }
     
-    func setupOvershading(){
+    func setupOvershading() {
         let optionClosure = { (action: UIAction) in
-            print(action.title)}
+            print(action.title)
+        }
         
-        overshadingPopupButton.menu = UIMenu(children : [
-            UIAction(title: "option 1", state: .on, handler: optionClosure),
-            UIAction(title: "option 2", handler: optionClosure),
-            UIAction(title: "option 3", handler: optionClosure)
-        ])
+        var optionsArray = [UIAction]()
+        
+        let overshadingData = dataSource.overshadingFactorCalc.map { $0[0] }
+
+        for coverage in overshadingData {
+            /// Create action with type as title
+            let action = UIAction(title: coverage as! String, state: .off, handler: optionClosure)
+            
+            /// Add new action to the options array
+            optionsArray.append(action)
+        }
+        /// Set the first option state to on
+        optionsArray[0].state = .on
+        
+        /// Create options menu
+        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
+        
+        /// Add menu to button
+        overshadingPopupButton.menu = optionsMenu
         overshadingPopupButton.showsMenuAsPrimaryAction = true
         overshadingPopupButton.changesSelectionAsPrimaryAction = true
     }
     
-    func runSimulation() {
+    // MARK: - Actions
+    
+    @IBAction func panelTypeChanged(_ sender: Any) {
+        guard let menuItem = collectorTypePopupButton.menu?.title else { return }
+        thermalSystem.setCollectorType(with: menuItem)
+    }
+    
+    @IBAction func tiltChanged(_ sender: Any) {
+        guard let menuItem = collectorTiltPopupButton.menu?.title else { return }
+        thermalSystem.setCollectorTilt(with: menuItem)
+    }
+    
+    @IBAction func orientationChanged(_ sender: Any) {
+        // assign vector of orientation and tilt to annual radiation
+    }
+    
+    @IBAction func overshadingChanged(_ sender: Any) {
+        // corresponding shading factor
+    }
+    
+    @IBAction func runSimulationTapped(_ sender: Any) {
+        // final daily heat transfer and solar input formulas
         
     }
     

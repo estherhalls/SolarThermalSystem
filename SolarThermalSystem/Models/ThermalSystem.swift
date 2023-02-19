@@ -12,12 +12,32 @@ class ThermalSystem {
     static let shared = ThermalSystem()
 
     // Global Parameters
-    /// User established values
+    /// User established and associated values
     var collectorType: String?
+    var collectorEfficiency: Double?
+    var collectorHeatLossCoefficient: Int?
+    var collectorAreaRatio: Double?
     var collectorTilt: String?
+    var collectorOrientation: String?
+    var annualRadiation: Int?
     var collectorWidth: Double?
     var collectorHeight: Double?
+    var collectorArea: Double?
     
+    func setCollectorType(with name: String) {
+        collectorType = name
+        print(collectorType!)
+    }
+    
+    func setCollectorTilt(with angle: String) {
+        collectorTilt = angle
+        print(collectorTilt!)
+    }
+    
+    func setCollectorOrientation(with direction: String) {
+        collectorOrientation = direction
+        print(collectorOrientation!)
+    }
     
 // mutating func updateSystemParameters(
     
