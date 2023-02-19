@@ -17,6 +17,7 @@
 		EB769C21299EE4B90094CDD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C1F299EE4B90094CDD0 /* LaunchScreen.storyboard */; };
 		EB769C2D29A00A7E0094CDD0 /* FormulaResources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */; };
 		EB769C2F29A00AA40094CDD0 /* Simulator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */; };
+		EBF6E58F29A2D73700324EF3 /* UnitConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF6E58E29A2D73700324EF3 /* UnitConversion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		EB769C22299EE4B90094CDD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB769C2C29A00A7E0094CDD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SolarThermalSystem/Base.lproj/FormulaResources.storyboard; sourceTree = "<group>"; };
 		EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Simulator.storyboard; sourceTree = "<group>"; };
+		EBF6E58E29A2D73700324EF3 /* UnitConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				EB347AEC29A01888004E2CDD /* Simulator */,
 				EB347AED29A01890004E2CDD /* Formula Resources */,
 				EB769C28299EE76A0094CDD0 /* Resources */,
+				EBF6E59029A2D73C00324EF3 /* EExtensions */,
 			);
 			path = SolarThermalSystem;
 			sourceTree = "<group>";
@@ -109,6 +112,14 @@
 				EB769C22299EE4B90094CDD0 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		EBF6E59029A2D73C00324EF3 /* EExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				EBF6E58E29A2D73700324EF3 /* UnitConversion.swift */,
+			);
+			path = EExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +200,7 @@
 				EB769C17299EE4B70094CDD0 /* SceneDelegate.swift in Sources */,
 				EB347AF129A01F98004E2CDD /* SimulatorViewController.swift in Sources */,
 				EB347AF829A1964C004E2CDD /* SystemDataSource.swift in Sources */,
+				EBF6E58F29A2D73700324EF3 /* UnitConversion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

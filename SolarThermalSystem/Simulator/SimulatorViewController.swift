@@ -159,12 +159,12 @@ class SimulatorViewController: UIViewController {
             // Create action with type as title
             let action = UIAction(title: "\(coverage)", state: .off) { (action: UIAction) in
                 if let selectedIndex = optionsArray.firstIndex(of: action) {
+                    // Find overshading factor in the 2D array that corresponds with the selected index, then assign the factor to model property for use in future functions
                     let overshadingFactor = self.dataSource.overshadingFactorCalc[selectedIndex][2]
                     self.viewModel.setOvershadingFactor(with: overshadingFactor as! Double)
                     print("Selected Index: \(selectedIndex), \(overshadingFactor)")
                 }
             }
-            
             // Add new action to the options array
             optionsArray.append(action)
         }
@@ -182,25 +182,31 @@ class SimulatorViewController: UIViewController {
     
     func setTextFields() {
         if let height = collectorHeightTextField.text, let value = Double(height) {
-            viewModel.collectorHeight = value
+            let convertedValue = value.convert(from: .feet, to: .meters)
+            viewModel.collectorHeight = convertedValue
             print(viewModel.collectorHeight!)
         } else {
             print("Missing Height Text Field")
         }
         if let width = collectorWidthTextField.text, let value = Double(width) {
-            viewModel.collectorWidth = value
+            let convertedValue = value.convert(from: .feet, to: .meters)
+            viewModel.collectorWidth = convertedValue
             print(viewModel.collectorWidth!)
         } else {
             print("Missing Width Text Field")
         }
         if let tank = tankVolumeTextField.text, let value = Double(tank) {
-            viewModel.tankVolume = value
+            let gallons = value
+            let convertedValue = gallons * 3.78541 // Gallons to liters
+            viewModel.tankVolume = convertedValue
             print(viewModel.tankVolume!)
         } else {
             print("Missing Tank Volume Text Field")
         }
         if let h20Demand = hotWaterDemandTextField.text, let value = Double(h20Demand) {
-            viewModel.dailyHotH20 = value
+            let gallons = value
+            let convertedValue = gallons * 3.78541 // Gallons to liters
+            viewModel.dailyHotH20 = convertedValue
             print(viewModel.dailyHotH20!)
         } else {
             print("Missing H20 Demand Text Field")
