@@ -12,6 +12,8 @@ class SimulatorModelController {
     static let shared = SimulatorModelController()
     
     // MARK: - Properties
+    let dataSource = SystemDataSource()
+    
     // User established and associated values
     var collectorType: String?
     var collectorEfficiency: Double?
@@ -34,7 +36,7 @@ class SimulatorModelController {
     var solarStorageVolFactor: Double? // 1 + 0.2 x ln(effectiveSolarVolume/dailyHotH20) (not to exceed 1.0)
     
     // MARK: - Methods
-
+    
     func setCollectorType(with name: String) {
         collectorType = name
         print(collectorType!)
@@ -48,6 +50,11 @@ class SimulatorModelController {
     func setCollectorOrientation(with direction: String) {
         collectorOrientation = direction
         print(collectorOrientation!)
+    }
+    
+    func setOvershadingFactor(with factor: Double) {
+        overshadingFactor = factor
+        print(overshadingFactor!)
     }
     
     func setCollectorApertureArea() {

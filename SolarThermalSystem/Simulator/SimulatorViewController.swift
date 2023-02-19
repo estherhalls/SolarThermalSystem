@@ -54,9 +54,132 @@ class SimulatorViewController: UIViewController {
         setupCollectorOrientation()
         setupOvershading()
     }
-
+    
     // MARK: - Methods
     /// Each method that deals with user input values needs to conclude by assigning that value to the model variables that will be accessed in the "run simulator" function
+    
+    func setupCollectorType() {
+        /// Collector type assigned will also determine the collectorEfficiency, the linear heat loss coefficient (used in function that assigns collectorPerformanceFactor), and ratio of aperture area to gross area (which will be multiplied by the dimensions provided by the user)
+        let optionClosure = { (action: UIAction) in
+            // Set user's selected menu item as the value of corresponding property
+            self.viewModel.setCollectorType(with: action.title)
+            print(action.title)
+        }
+        var optionsArray = [UIAction]()
+        
+        let typeData = dataSource.collectorParametersCalc.map { $0[0] }
+        
+        for type in typeData {
+            // Create action with type as title
+            let action = UIAction(title: "\(type)", state: .off, handler: optionClosure)
+            
+            // Add new action to the options array
+            optionsArray.append(action)
+        }
+        // Set the first option state to on
+        optionsArray[0].state = .on
+        
+        // Create options menu
+        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
+        
+        // Add menu to button
+        collectorTypePopupButton.menu = optionsMenu
+        collectorTypePopupButton.showsMenuAsPrimaryAction = true
+        collectorTypePopupButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    func setupCollectorTilt() {
+        /// Tilt and orientation are used together in an array to determine the annual solar radiation kWh/m2
+        let optionClosure = { (action: UIAction) in
+            // Set user's selected menu item as the value of corresponding property
+            self.viewModel.setCollectorTilt(with: action.title)
+            print(action.title)
+        }
+        var optionsArray = [UIAction]()
+        
+        let tiltData = dataSource.annualRadiationCalc.map { $0[0] }
+        
+        for tilt in tiltData {
+            // Create action with type as title
+            let action = UIAction(title: "\(tilt)", state: .off, handler: optionClosure)
+            
+            // Add new action to the options array
+            optionsArray.append(action)
+        }
+        // Set the first option state to on
+        optionsArray[0].state = .on
+        
+        // Create options menu
+        let optionsMenu = UIMenu(title: "", options: .displayInline, children: optionsArray)
+        
+        // Add menu to button
+        collectorTiltPopupButton.menu = optionsMenu
+        collectorTiltPopupButton.showsMenuAsPrimaryAction = true
+        collectorTiltPopupButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    func setupCollectorOrientation() {
+        let optionClosure = { (action: UIAction) in
+            // Set user's selected menu item as the value of corresponding property
+            self.viewModel.setCollectorOrientation(with: action.title)
+            print(action.title)}
+        
+        var optionsArray = [UIAction]()
+        
+        let orientationData = dataSource.annualRadiationCalc
+        let orientationArray = orientationData[0]
+        /// Used array slicing syntax here to set range so that 2D array is set up in a way that can also be displayed on Resources tab
+        let directionArray = orientationArray[1..<orientationArray.count]
+        for direction in directionArray {
+            // Create action with type as title
+            let action = UIAction(title: "\(direction)", state: .off, handler: optionClosure)
+            
+            // Add new action to the options array
+            optionsArray.append(action)
+        }
+        // Set the first option state to on
+        optionsArray[0].state = .on
+        
+        // Create options menu
+        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
+        
+        // Add menu to button
+        collectorOrientationPopupButton.menu = optionsMenu
+        collectorOrientationPopupButton.showsMenuAsPrimaryAction = true
+        collectorOrientationPopupButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    func setupOvershading() {
+  
+        var optionsArray = [UIAction]()
+        
+        let overshadingData = dataSource.overshadingFactorCalc.map { $0[0] }
+        
+        for (index, coverage) in overshadingData.enumerated() {
+            // Create action with type as title
+            let action = UIAction(title: "\(coverage)", state: .off) { (action: UIAction) in
+                if let selectedIndex = optionsArray.firstIndex(of: action) {
+                    let overshadingFactor = self.dataSource.overshadingFactorCalc[selectedIndex][2]
+                    self.viewModel.setOvershadingFactor(with: overshadingFactor as! Double)
+                    print("Selected Index: \(selectedIndex), \(overshadingFactor)")
+                }
+            }
+            
+            // Add new action to the options array
+            optionsArray.append(action)
+        }
+        // Set the first option state to on
+        optionsArray[0].state = .on
+        
+        // Create options menu
+        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
+        
+        // Add menu to button
+        overshadingPopupButton.menu = optionsMenu
+        overshadingPopupButton.showsMenuAsPrimaryAction = true
+        overshadingPopupButton.changesSelectionAsPrimaryAction = true
+    }
+    
     func setTextFields() {
         if let height = collectorHeightTextField.text, let value = Double(height) {
             viewModel.collectorHeight = value
@@ -84,128 +207,11 @@ class SimulatorViewController: UIViewController {
         }
     }
     
-    func setupCollectorType() {
-        /// Collector type assigned will also determine the collectorEfficiency, the linear heat loss coefficient (used in function that assigns collectorPerformanceFactor), and ratio of aperture area to gross area (which will be multiplied by the dimensions provided by the user)
-        ///
-        let optionClosure = { (action: UIAction) in
-            self.viewModel.setCollectorType(with: action.title)
-            print(action.title)
-        }
-        var optionsArray = [UIAction]()
-        
-        let typeData = dataSource.collectorParametersCalc.map { $0[0] }
-        
-        for type in typeData {
-            /// Create action with type as title
-            let action = UIAction(title: type as! String, state: .off, handler: optionClosure)
-            
-            /// Add new action to the options array
-            optionsArray.append(action)
-        }
-        /// Set the first option state to on
-        optionsArray[0].state = .on
-        
-        /// Create options menu
-        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
-        
-        /// Add menu to button
-        collectorTypePopupButton.menu = optionsMenu
-        collectorTypePopupButton.showsMenuAsPrimaryAction = true
-        collectorTypePopupButton.changesSelectionAsPrimaryAction = true
-    }
-    
-    func setupCollectorTilt() {
-        /// Tilt and orientation are used together in an array to determine the annual solar radiation kWh/m2
-        let optionClosure = { (action: UIAction) in
-            self.viewModel.setCollectorTilt(with: action.title)
-            print(action.title)
-        }
-        var optionsArray = [UIAction]()
-        
-        let tiltData = dataSource.annualRadiationCalc.map { $0[0] }
-//        let tiltArray = tiltData[1..<tiltData.count]
-        
-        for tilt in tiltData {
-            /// Create action with type as title
-            let action = UIAction(title: tilt as! String, state: .off, handler: optionClosure)
-            
-            /// Add new action to the options array
-            optionsArray.append(action)
-        }
-        /// Set the first option state to on
-        optionsArray[0].state = .on
-        
-        /// Create options menu
-        let optionsMenu = UIMenu(title: "", options: .displayInline, children: optionsArray)
-        
-        /// Add menu to button
-        collectorTiltPopupButton.menu = optionsMenu
-        collectorTiltPopupButton.showsMenuAsPrimaryAction = true
-        collectorTiltPopupButton.changesSelectionAsPrimaryAction = true
-    }
-    
-    func setupCollectorOrientation() {
-        let optionClosure = { (action: UIAction) in
-            self.viewModel.setCollectorOrientation(with: action.title)
-            print(action.title)}
-        
-        var optionsArray = [UIAction]()
-        
-        let orientationData = dataSource.annualRadiationCalc
-        let orientationArray = orientationData[0]
-        let directionArray = orientationArray[1..<orientationArray.count]
-        for direction in directionArray {
-            /// Create action with type as title
-            let action = UIAction(title: direction as! String, state: .off, handler: optionClosure)
-            
-            /// Add new action to the options array
-            optionsArray.append(action)
-        }
-        /// Set the first option state to on
-        optionsArray[0].state = .on
-        
-        /// Create options menu
-        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
-        
-        /// Add menu to button
-        collectorOrientationPopupButton.menu = optionsMenu
-        collectorOrientationPopupButton.showsMenuAsPrimaryAction = true
-        collectorOrientationPopupButton.changesSelectionAsPrimaryAction = true
-    }
-    
-    func setupOvershading() {
-        let optionClosure = { (action: UIAction) in
-            print(action.title)
-        }
-        
-        var optionsArray = [UIAction]()
-        
-        let overshadingData = dataSource.overshadingFactorCalc.map { $0[0] }
-
-        for coverage in overshadingData {
-            /// Create action with type as title
-            let action = UIAction(title: coverage as! String, state: .off, handler: optionClosure)
-            
-            /// Add new action to the options array
-            optionsArray.append(action)
-        }
-        /// Set the first option state to on
-        optionsArray[0].state = .on
-        
-        /// Create options menu
-        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
-        
-        /// Add menu to button
-        overshadingPopupButton.menu = optionsMenu
-        overshadingPopupButton.showsMenuAsPrimaryAction = true
-        overshadingPopupButton.changesSelectionAsPrimaryAction = true
-    }
-    
     // MARK: - Actions
     @IBAction func runSimulationTapped(_ sender: Any) {
         // First assign text fields to global properties
-       setTextFields()
-   
+        setTextFields()
+        
         // final daily heat transfer and solar input formulas
         // Case success, populate labels. Case failure, alert to check all fields for data.
     }
