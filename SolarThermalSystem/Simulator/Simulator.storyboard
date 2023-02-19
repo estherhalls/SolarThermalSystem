@@ -77,9 +77,6 @@
                                                                 </menu>
                                                                 <state key="normal" image="chevron.compact.down" catalog="system"/>
                                                                 <buttonConfiguration key="configuration" style="tinted"/>
-                                                                <connections>
-                                                                    <action selector="panelTypeChanged:" destination="Nes-fx-wKm" eventType="touchUpInside" id="32X-EY-kPR"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -106,9 +103,6 @@
                                                                 </menu>
                                                                 <state key="normal" image="chevron.compact.down" catalog="system"/>
                                                                 <buttonConfiguration key="configuration" style="tinted"/>
-                                                                <connections>
-                                                                    <action selector="tiltChanged:" destination="Nes-fx-wKm" eventType="touchUpInside" id="sfB-tT-wZp"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -135,9 +129,6 @@
                                                                 </menu>
                                                                 <state key="normal" image="chevron.compact.down" catalog="system"/>
                                                                 <buttonConfiguration key="configuration" style="tinted"/>
-                                                                <connections>
-                                                                    <action selector="orientationChanged:" destination="Nes-fx-wKm" eventType="touchUpInside" id="Qhk-n7-qsy"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -266,9 +257,6 @@
                                                                 </menu>
                                                                 <state key="normal" image="chevron.compact.down" catalog="system"/>
                                                                 <buttonConfiguration key="configuration" style="tinted"/>
-                                                                <connections>
-                                                                    <action selector="overshadingChanged:" destination="Nes-fx-wKm" eventType="touchUpInside" id="7I7-Hu-xwO"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -378,15 +366,19 @@
                                                     <constraint firstItem="pJV-QP-yvk" firstAttribute="trailing" secondItem="Y2h-xz-Ewv" secondAttribute="trailing" id="w2D-8e-WgA"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVC-AB-XR5">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVC-AB-XR5">
                                                 <rect key="frame" x="96.666666666666686" y="517" width="200" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="EMu-6d-iQH"/>
                                                     <constraint firstAttribute="width" constant="200" id="lRe-rh-5Xj"/>
                                                 </constraints>
-                                                <color key="tintColor" red="0.80000000000000004" green="0.16078431369999999" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" systemColor="systemBackgroundColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" image="sun.and.horizon.fill" catalog="system" title="Run Simulation"/>
+                                                <buttonConfiguration key="configuration" style="tinted" image="sun.and.horizon.fill" catalog="system" title="Run Simulation">
+                                                    <backgroundConfiguration key="background">
+                                                        <color key="backgroundColor" red="0.80000000000000004" green="0.16078431369999999" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </backgroundConfiguration>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="runSimulationTapped:" destination="Nes-fx-wKm" eventType="touchUpInside" id="6DB-Pg-Mhj"/>
                                                 </connections>
@@ -523,8 +515,11 @@
                         <outlet property="collectorTiltPopupButton" destination="sRz-nS-Hfg" id="0CQ-TT-OGQ"/>
                         <outlet property="collectorTypePopupButton" destination="v77-iM-Jjr" id="akH-xb-FVn"/>
                         <outlet property="collectorWidthTextField" destination="G0Z-gU-Cjk" id="Zh2-gf-I5c"/>
+                        <outlet property="dailyHeatTransferLabel" destination="GUi-23-pVi" id="Mna-SJ-wfT"/>
                         <outlet property="hotWaterDemandTextField" destination="RwF-S5-e6f" id="VV0-cf-paM"/>
                         <outlet property="overshadingPopupButton" destination="w8z-YZ-Mtn" id="zXr-7a-W2G"/>
+                        <outlet property="runSimulationButton" destination="XVC-AB-XR5" id="3O5-oe-Tph"/>
+                        <outlet property="solarInputLabel" destination="MYa-WS-H6U" id="MH6-mK-I22"/>
                         <outlet property="systemImageView" destination="70C-8x-IMp" id="Gph-sa-BoK"/>
                         <outlet property="tankVolumeTextField" destination="7dO-rt-lrl" id="hz7-hv-nHZ"/>
                     </connections>
