@@ -10,7 +10,7 @@ struct SystemDataSource {
     
     // Collector Parameters: Type, Efficiency, Linear Heat Loss Coefficient, Ratio of Aperture Area to Gross Area
     let collectorParametersCalc = [
-        ["Collector Type", "Zero-loss Collector Efficiency", "Linear Heat Loss Coefficient", "Ratio of Aperture Area to Gross Area"],
+//        ["Collector Type", "Zero-loss Collector Efficiency", "Linear Heat Loss Coefficient", "Ratio of Aperture Area to Gross Area"],
         ["Flat Plate, Glazed", 0.75, 6, 0.90],
         ["Evacuated Tube", 0.6, 3, 0.72],
         ["Flat Plate, Unglazed", 0.9, 20, 1.0]
@@ -18,7 +18,7 @@ struct SystemDataSource {
     
     // Annual Solar Radiation, kWh/m^2, based on collector tilt and orientation
     let annualRadiationCalc = [
-        ["Tilt", "South", "SE/SW", "E/W", "NE/NW", "North"],
+//        ["Tilt", "South", "SE/SW", "E/W", "NE/NW", "North"],
         ["Horizontal", 961, 961, 961, 961, 961],
         ["30°", 1073, 1027, 913, 785, 730],
         ["45°", 1054, 997, 854, 686, 640],
@@ -28,7 +28,7 @@ struct SystemDataSource {
     
     // Overshading Factor
     let overshadingFactorCalc = [
-        ["Overshading", "% of Sky Blocked by Obstacles", "Overshading Factor"],
+//        ["Overshading", "% of Sky Blocked by Obstacles", "Overshading Factor"],
         ["Heavy", "> 80%", 0.5],
         ["Significant", "60 - 80%", 0.65],
         ["Modest", "20 - 60%", 0.8],

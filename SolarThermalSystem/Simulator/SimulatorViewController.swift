@@ -21,6 +21,10 @@ class SimulatorViewController: UIViewController {
     @IBOutlet weak var systemImageView: UIImageView!
     @IBOutlet weak var backgroundView: UIView!
     
+    
+    // MARK: - Properties
+    let dataSource = SystemDataSource()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,16 +56,39 @@ class SimulatorViewController: UIViewController {
     /// Each method that deals with user input values needs to conclude by assigning that value to the model variables that will be accessed in the "run simulator" function
     func setupCollectorType(){
         /// Collector type assigned will also determine the collectorEfficiency, the linear heat loss coefficient (used in function that assigns collectorPerformanceFactor), and ratio of aperture area to gross area (which will be multiplied by the dimensions provided by the user)
+        ///
         let optionClosure = { (action: UIAction) in
-            print(action.title)}
+            print(action.title)
+        }
+        var optionsArray = [UIAction]()
+        let typeData = dataSource.collectorParametersCalc.map { $0[0]
+        }
         
-        collectorTypePopupButton.menu = UIMenu(children : [
-            UIAction(title: "option 1", state: .on, handler: optionClosure),
-            UIAction(title: "option 2", handler: optionClosure),
-            UIAction(title: "option 3", handler: optionClosure)
-        ])
-        collectorTypePopupButton.showsMenuAsPrimaryAction = true
-        collectorTypePopupButton.changesSelectionAsPrimaryAction = true
+        for type in typeData {
+            /// Create action with type as title
+            let action = UIAction(title: type as! String, state: .off, handler: optionClosure)
+            
+            /// Add new action to the options array
+            optionsArray.append(action)
+        }
+        /// Set the first option state to on
+        optionsArray[0].state = .on
+        
+        /// Create options menu
+        let optionsMenu = UIMenu(title: "", options: .displayInline, children: optionsArray)
+        
+        /// Add menu to button
+        collectorTypePopupButton.menu = optionsMenu
+        //        let optionClosure = { (action: UIAction) in
+        //            print(action.title)}
+        //
+        //        collectorTypePopupButton.menu = UIMenu(children : [
+        //            UIAction(title: "option 1", state: .on, handler: optionClosure),
+        //            UIAction(title: "option 2", handler: optionClosure),
+        //            UIAction(title: "option 3", handler: optionClosure)
+        //        ])
+                collectorTypePopupButton.showsMenuAsPrimaryAction = true
+                collectorTypePopupButton.changesSelectionAsPrimaryAction = true
     }
     
     func setupCollectorTilt(){
@@ -103,5 +130,5 @@ class SimulatorViewController: UIViewController {
         overshadingPopupButton.showsMenuAsPrimaryAction = true
         overshadingPopupButton.changesSelectionAsPrimaryAction = true
     }
- 
+    
 } // End of Class
