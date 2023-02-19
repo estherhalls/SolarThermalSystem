@@ -23,6 +23,7 @@ class SimulatorViewController: UIViewController {
     
     
     // MARK: - Properties
+    let thermalSystem = ThermalSystem.shared
     let dataSource = SystemDataSource()
     
     // MARK: - Lifecycle
@@ -61,8 +62,8 @@ class SimulatorViewController: UIViewController {
             print(action.title)
         }
         var optionsArray = [UIAction]()
-        let typeData = dataSource.collectorParametersCalc.map { $0[0]
-        }
+        
+        let typeData = dataSource.collectorParametersCalc.map { $0[0] }
         
         for type in typeData {
             /// Create action with type as title
@@ -79,28 +80,34 @@ class SimulatorViewController: UIViewController {
         
         /// Add menu to button
         collectorTypePopupButton.menu = optionsMenu
-        //        let optionClosure = { (action: UIAction) in
-        //            print(action.title)}
-        //
-        //        collectorTypePopupButton.menu = UIMenu(children : [
-        //            UIAction(title: "option 1", state: .on, handler: optionClosure),
-        //            UIAction(title: "option 2", handler: optionClosure),
-        //            UIAction(title: "option 3", handler: optionClosure)
-        //        ])
-                collectorTypePopupButton.showsMenuAsPrimaryAction = true
-                collectorTypePopupButton.changesSelectionAsPrimaryAction = true
+        collectorTypePopupButton.showsMenuAsPrimaryAction = true
+        collectorTypePopupButton.changesSelectionAsPrimaryAction = true
     }
     
     func setupCollectorTilt(){
         /// Tilt and orientation are used together in an array to determine the annual solar radiation kWh/m2
         let optionClosure = { (action: UIAction) in
-            print(action.title)}
+            print(action.title)
+        }
+        var optionsArray = [UIAction]()
         
-        collectorTiltPopupButton.menu = UIMenu(children : [
-            UIAction(title: "option 1", state: .on, handler: optionClosure),
-            UIAction(title: "option 2", handler: optionClosure),
-            UIAction(title: "option 3", handler: optionClosure)
-        ])
+        let tiltData = dataSource.annualRadiationCalc.map { $0[0] }
+        
+        for tilt in tiltData {
+            /// Create action with type as title
+            let action = UIAction(title: tilt as! String, state: .off, handler: optionClosure)
+            
+            /// Add new action to the options array
+            optionsArray.append(action)
+        }
+        /// Set the first option state to on
+        optionsArray[0].state = .on
+        
+        /// Create options menu
+        let optionsMenu = UIMenu(title: "", options: .displayInline, children: optionsArray)
+        
+        /// Add menu to button
+        collectorTiltPopupButton.menu = optionsMenu
         collectorTiltPopupButton.showsMenuAsPrimaryAction = true
         collectorTiltPopupButton.changesSelectionAsPrimaryAction = true
     }
@@ -129,6 +136,10 @@ class SimulatorViewController: UIViewController {
         ])
         overshadingPopupButton.showsMenuAsPrimaryAction = true
         overshadingPopupButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    func runSimulation() {
+        
     }
     
 } // End of Class
