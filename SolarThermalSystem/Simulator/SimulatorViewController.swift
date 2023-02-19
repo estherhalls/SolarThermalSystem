@@ -17,10 +17,18 @@ class SimulatorViewController: UIViewController {
     @IBOutlet weak var overshadingPopupButton: UIButton!
     @IBOutlet weak var tankVolumeTextField: UITextField!
     @IBOutlet weak var hotWaterDemandTextField: UITextField!
-    @IBOutlet weak var runSimulationButton: UIButton!
     @IBOutlet weak var systemImageView: UIImageView!
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var runSimulationButton: UIButton!
+    @IBOutlet weak var dailyHeatTransferLabel: UILabel!
+    @IBOutlet weak var solarInputLabel: UILabel!
     
+    // MARK: - Properties
+    // Initialize Model Properties
+    var viewModel = SimulatorModelController.shared
+    let dataSource = SystemDataSource()
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,68 +54,160 @@ class SimulatorViewController: UIViewController {
         setupCollectorOrientation()
         setupOvershading()
     }
-    
+
     // MARK: - Methods
-    func setupCollectorType(){
+    /// Each method that deals with user input values needs to conclude by assigning that value to the model variables that will be accessed in the "run simulator" function
+    func setTextFields() {
+        if let height = collectorHeightTextField.text, let value = Double(height) {
+            viewModel.collectorHeight = value
+            print(viewModel.collectorHeight!)
+        } else {
+            print("Missing Height Text Field")
+        }
+        if let width = collectorWidthTextField.text, let value = Double(width) {
+            viewModel.collectorWidth = value
+            print(viewModel.collectorWidth!)
+        } else {
+            print("Missing Width Text Field")
+        }
+        if let tank = tankVolumeTextField.text, let value = Double(tank) {
+            viewModel.tankVolume = value
+            print(viewModel.tankVolume!)
+        } else {
+            print("Missing Tank Volume Text Field")
+        }
+        if let h20Demand = hotWaterDemandTextField.text, let value = Double(h20Demand) {
+            viewModel.dailyHotH20 = value
+            print(viewModel.dailyHotH20!)
+        } else {
+            print("Missing H20 Demand Text Field")
+        }
+    }
+    
+    func setupCollectorType() {
+        /// Collector type assigned will also determine the collectorEfficiency, the linear heat loss coefficient (used in function that assigns collectorPerformanceFactor), and ratio of aperture area to gross area (which will be multiplied by the dimensions provided by the user)
+        ///
         let optionClosure = { (action: UIAction) in
-            print(action.title)}
+            self.viewModel.setCollectorType(with: action.title)
+            print(action.title)
+        }
+        var optionsArray = [UIAction]()
         
-        collectorTypePopupButton.menu = UIMenu(children : [
-            UIAction(title: "option 1", state: .on, handler: optionClosure),
-            UIAction(title: "option 2", handler: optionClosure),
-            UIAction(title: "option 3", handler: optionClosure)
-        ])
+        let typeData = dataSource.collectorParametersCalc.map { $0[0] }
+        
+        for type in typeData {
+            /// Create action with type as title
+            let action = UIAction(title: type as! String, state: .off, handler: optionClosure)
+            
+            /// Add new action to the options array
+            optionsArray.append(action)
+        }
+        /// Set the first option state to on
+        optionsArray[0].state = .on
+        
+        /// Create options menu
+        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
+        
+        /// Add menu to button
+        collectorTypePopupButton.menu = optionsMenu
         collectorTypePopupButton.showsMenuAsPrimaryAction = true
         collectorTypePopupButton.changesSelectionAsPrimaryAction = true
     }
     
-    func setupCollectorTilt(){
+    func setupCollectorTilt() {
+        /// Tilt and orientation are used together in an array to determine the annual solar radiation kWh/m2
         let optionClosure = { (action: UIAction) in
-            print(action.title)}
+            self.viewModel.setCollectorTilt(with: action.title)
+            print(action.title)
+        }
+        var optionsArray = [UIAction]()
         
-        collectorTiltPopupButton.menu = UIMenu(children : [
-            UIAction(title: "option 1", state: .on, handler: optionClosure),
-            UIAction(title: "option 2", handler: optionClosure),
-            UIAction(title: "option 3", handler: optionClosure)
-        ])
+        let tiltData = dataSource.annualRadiationCalc.map { $0[0] }
+//        let tiltArray = tiltData[1..<tiltData.count]
+        
+        for tilt in tiltData {
+            /// Create action with type as title
+            let action = UIAction(title: tilt as! String, state: .off, handler: optionClosure)
+            
+            /// Add new action to the options array
+            optionsArray.append(action)
+        }
+        /// Set the first option state to on
+        optionsArray[0].state = .on
+        
+        /// Create options menu
+        let optionsMenu = UIMenu(title: "", options: .displayInline, children: optionsArray)
+        
+        /// Add menu to button
+        collectorTiltPopupButton.menu = optionsMenu
         collectorTiltPopupButton.showsMenuAsPrimaryAction = true
         collectorTiltPopupButton.changesSelectionAsPrimaryAction = true
     }
     
-    func setupCollectorOrientation(){
+    func setupCollectorOrientation() {
         let optionClosure = { (action: UIAction) in
+            self.viewModel.setCollectorOrientation(with: action.title)
             print(action.title)}
         
-        collectorOrientationPopupButton.menu = UIMenu(children : [
-            UIAction(title: "option 1", state: .on, handler: optionClosure),
-            UIAction(title: "option 2", handler: optionClosure),
-            UIAction(title: "option 3", handler: optionClosure)
-        ])
+        var optionsArray = [UIAction]()
+        
+        let orientationData = dataSource.annualRadiationCalc
+        let orientationArray = orientationData[0]
+        let directionArray = orientationArray[1..<orientationArray.count]
+        for direction in directionArray {
+            /// Create action with type as title
+            let action = UIAction(title: direction as! String, state: .off, handler: optionClosure)
+            
+            /// Add new action to the options array
+            optionsArray.append(action)
+        }
+        /// Set the first option state to on
+        optionsArray[0].state = .on
+        
+        /// Create options menu
+        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
+        
+        /// Add menu to button
+        collectorOrientationPopupButton.menu = optionsMenu
         collectorOrientationPopupButton.showsMenuAsPrimaryAction = true
         collectorOrientationPopupButton.changesSelectionAsPrimaryAction = true
     }
     
-    func setupOvershading(){
+    func setupOvershading() {
         let optionClosure = { (action: UIAction) in
-            print(action.title)}
+            print(action.title)
+        }
         
-        overshadingPopupButton.menu = UIMenu(children : [
-            UIAction(title: "option 1", state: .on, handler: optionClosure),
-            UIAction(title: "option 2", handler: optionClosure),
-            UIAction(title: "option 3", handler: optionClosure)
-        ])
+        var optionsArray = [UIAction]()
+        
+        let overshadingData = dataSource.overshadingFactorCalc.map { $0[0] }
+
+        for coverage in overshadingData {
+            /// Create action with type as title
+            let action = UIAction(title: coverage as! String, state: .off, handler: optionClosure)
+            
+            /// Add new action to the options array
+            optionsArray.append(action)
+        }
+        /// Set the first option state to on
+        optionsArray[0].state = .on
+        
+        /// Create options menu
+        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
+        
+        /// Add menu to button
+        overshadingPopupButton.menu = optionsMenu
         overshadingPopupButton.showsMenuAsPrimaryAction = true
         overshadingPopupButton.changesSelectionAsPrimaryAction = true
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: - Actions
+    @IBAction func runSimulationTapped(_ sender: Any) {
+        // First assign text fields to global properties
+       setTextFields()
+   
+        // final daily heat transfer and solar input formulas
+        // Case success, populate labels. Case failure, alert to check all fields for data.
+    }
     
-}
+} // End of Class

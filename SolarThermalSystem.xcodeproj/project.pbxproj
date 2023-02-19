@@ -8,18 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		EB347AF129A01F98004E2CDD /* SimulatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB347AF029A01F98004E2CDD /* SimulatorViewController.swift */; };
+		EB347AF429A1863D004E2CDD /* SimulatorModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB347AF329A1863D004E2CDD /* SimulatorModelController.swift */; };
+		EB347AF829A1964C004E2CDD /* SystemDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB347AF729A1964C004E2CDD /* SystemDataSource.swift */; };
 		EB769C15299EE4B70094CDD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB769C14299EE4B70094CDD0 /* AppDelegate.swift */; };
 		EB769C17299EE4B70094CDD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB769C16299EE4B70094CDD0 /* SceneDelegate.swift */; };
 		EB769C1C299EE4B70094CDD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C1A299EE4B70094CDD0 /* Main.storyboard */; };
 		EB769C1E299EE4B90094CDD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB769C1D299EE4B90094CDD0 /* Assets.xcassets */; };
 		EB769C21299EE4B90094CDD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C1F299EE4B90094CDD0 /* LaunchScreen.storyboard */; };
-		EB769C2A299EEE720094CDD0 /* ThermalSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB769C29299EEE720094CDD0 /* ThermalSystem.swift */; };
 		EB769C2D29A00A7E0094CDD0 /* FormulaResources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */; };
 		EB769C2F29A00AA40094CDD0 /* Simulator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EB347AF029A01F98004E2CDD /* SimulatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorViewController.swift; sourceTree = "<group>"; };
+		EB347AF329A1863D004E2CDD /* SimulatorModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorModelController.swift; sourceTree = "<group>"; };
+		EB347AF729A1964C004E2CDD /* SystemDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDataSource.swift; sourceTree = "<group>"; };
 		EB769C11299EE4B70094CDD0 /* SolarThermalSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolarThermalSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB769C14299EE4B70094CDD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB769C16299EE4B70094CDD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +30,6 @@
 		EB769C1D299EE4B90094CDD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB769C20299EE4B90094CDD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB769C22299EE4B90094CDD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EB769C29299EEE720094CDD0 /* ThermalSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermalSystem.swift; sourceTree = "<group>"; };
 		EB769C2C29A00A7E0094CDD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SolarThermalSystem/Base.lproj/FormulaResources.storyboard; sourceTree = "<group>"; };
 		EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Simulator.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,6 +50,7 @@
 			children = (
 				EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */,
 				EB347AF029A01F98004E2CDD /* SimulatorViewController.swift */,
+				EB347AF329A1863D004E2CDD /* SimulatorModelController.swift */,
 			);
 			path = Simulator;
 			sourceTree = "<group>";
@@ -58,6 +61,14 @@
 				EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */,
 			);
 			path = "Formula Resources";
+			sourceTree = "<group>";
+		};
+		EB347AF229A1847F004E2CDD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EB347AF729A1964C004E2CDD /* SystemDataSource.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EB769C08299EE4B70094CDD0 = {
@@ -80,10 +91,10 @@
 			isa = PBXGroup;
 			children = (
 				EB769C1A299EE4B70094CDD0 /* Main.storyboard */,
+				EB347AF229A1847F004E2CDD /* Models */,
 				EB347AEC29A01888004E2CDD /* Simulator */,
 				EB347AED29A01890004E2CDD /* Formula Resources */,
 				EB769C28299EE76A0094CDD0 /* Resources */,
-				EB769C29299EEE720094CDD0 /* ThermalSystem.swift */,
 			);
 			path = SolarThermalSystem;
 			sourceTree = "<group>";
@@ -174,9 +185,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB769C15299EE4B70094CDD0 /* AppDelegate.swift in Sources */,
-				EB769C2A299EEE720094CDD0 /* ThermalSystem.swift in Sources */,
+				EB347AF429A1863D004E2CDD /* SimulatorModelController.swift in Sources */,
 				EB769C17299EE4B70094CDD0 /* SceneDelegate.swift in Sources */,
 				EB347AF129A01F98004E2CDD /* SimulatorViewController.swift in Sources */,
+				EB347AF829A1964C004E2CDD /* SystemDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
