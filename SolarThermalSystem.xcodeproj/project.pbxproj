@@ -97,7 +97,7 @@
 				EB347AEC29A01888004E2CDD /* Simulator */,
 				EB347AED29A01890004E2CDD /* Formula Resources */,
 				EB769C28299EE76A0094CDD0 /* Resources */,
-				EBF6E59029A2D73C00324EF3 /* EExtensions */,
+				EBF6E59029A2D73C00324EF3 /* Extensions */,
 			);
 			path = SolarThermalSystem;
 			sourceTree = "<group>";
@@ -114,12 +114,12 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		EBF6E59029A2D73C00324EF3 /* EExtensions */ = {
+		EBF6E59029A2D73C00324EF3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				EBF6E58E29A2D73700324EF3 /* UnitConversion.swift */,
 			);
-			path = EExtensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

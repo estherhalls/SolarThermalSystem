@@ -60,19 +60,21 @@ class SimulatorViewController: UIViewController {
     
     func setupCollectorType() {
         /// Collector type assigned will also determine the collectorEfficiency, the linear heat loss coefficient (used in function that assigns collectorPerformanceFactor), and ratio of aperture area to gross area (which will be multiplied by the dimensions provided by the user)
-        let optionClosure = { (action: UIAction) in
-            // Set user's selected menu item as the value of corresponding property
-            self.viewModel.setCollectorType(with: action.title)
-            print(action.title)
-        }
         var optionsArray = [UIAction]()
         
         let typeData = dataSource.collectorParametersCalc.map { $0[0] }
         
-        for type in typeData {
+        for (index, type) in typeData.enumerated() {
             // Create action with type as title
-            let action = UIAction(title: "\(type)", state: .off, handler: optionClosure)
-            
+            let action = UIAction(title: "\(type)", state: .off) { (action: UIAction) in
+                if let selectedIndex = optionsArray.firstIndex(of: action) {
+                    // Find overshading factor in the 2D array that corresponds with the selected index, then assign the factor to model property for use in future functions
+                    let efficiency = self.dataSource.collectorParametersCalc[selectedIndex][1]
+                    let heatLoss = self.dataSource.collectorParametersCalc[selectedIndex][2]
+                    let areaRatio = self.dataSource.collectorParametersCalc[selectedIndex][3]
+                    self.viewModel.setCollectorType(with: action.title, efficiency: efficiency as! Double, heatLoss: heatLoss as! Double, areaRatio: areaRatio as! Double)
+                }
+            }
             // Add new action to the options array
             optionsArray.append(action)
         }
@@ -90,19 +92,18 @@ class SimulatorViewController: UIViewController {
     
     func setupCollectorTilt() {
         /// Tilt and orientation are used together in an array to determine the annual solar radiation kWh/m2
-        let optionClosure = { (action: UIAction) in
-            // Set user's selected menu item as the value of corresponding property
-            self.viewModel.setCollectorTilt(with: action.title)
-            print(action.title)
-        }
         var optionsArray = [UIAction]()
         
         let tiltData = dataSource.annualRadiationCalc.map { $0[0] }
         
-        for tilt in tiltData {
+        for (index, tilt) in tiltData.enumerated() {
             // Create action with type as title
-            let action = UIAction(title: "\(tilt)", state: .off, handler: optionClosure)
-            
+            let action = UIAction(title: "\(tilt)", state: .off) { (action: UIAction) in
+                if let selectedIndex = optionsArray.firstIndex(of: action) {
+                    self.viewModel.setCollectorTilt(with: selectedIndex)
+                    print(action.title)
+                }
+            }
             // Add new action to the options array
             optionsArray.append(action)
         }
@@ -119,21 +120,21 @@ class SimulatorViewController: UIViewController {
     }
     
     func setupCollectorOrientation() {
-        let optionClosure = { (action: UIAction) in
-            // Set user's selected menu item as the value of corresponding property
-            self.viewModel.setCollectorOrientation(with: action.title)
-            print(action.title)}
-        
         var optionsArray = [UIAction]()
         
-        let orientationData = dataSource.annualRadiationCalc
-        let orientationArray = orientationData[0]
+        let orientationData = dataSource.annualRadiationCalc[0]
+        
+//        let orientationArray = orientationData[0]
         /// Used array slicing syntax here to set range so that 2D array is set up in a way that can also be displayed on Resources tab
-        let directionArray = orientationArray[1..<orientationArray.count]
-        for direction in directionArray {
+        let directionArray = orientationData[1..<orientationData.count]
+        for (index, direction) in directionArray.enumerated() {
             // Create action with type as title
-            let action = UIAction(title: "\(direction)", state: .off, handler: optionClosure)
-            
+            let action = UIAction(title: "\(direction)", state: .off) { (action: UIAction) in
+                if let selectedIndex = optionsArray.firstIndex(of: action) {
+                    self.viewModel.setCollectorOrientation(with: selectedIndex)
+                    print(action.title)
+                }
+            }
             // Add new action to the options array
             optionsArray.append(action)
         }
@@ -150,7 +151,6 @@ class SimulatorViewController: UIViewController {
     }
     
     func setupOvershading() {
-  
         var optionsArray = [UIAction]()
         
         let overshadingData = dataSource.overshadingFactorCalc.map { $0[0] }
@@ -217,6 +217,9 @@ class SimulatorViewController: UIViewController {
     @IBAction func runSimulationTapped(_ sender: Any) {
         // First assign text fields to global properties
         setTextFields()
+        // Solar Input Formula:  solarInput = collectorRadiation * overshadingFactor * collectorApertureArea * collectorEfficiency * utilizationFactor * collectorPerformanceFactor * solarStorageVolFactor
+        viewModel.prepareFinalFormulaTerms()
+        
         
         // final daily heat transfer and solar input formulas
         // Case success, populate labels. Case failure, alert to check all fields for data.
