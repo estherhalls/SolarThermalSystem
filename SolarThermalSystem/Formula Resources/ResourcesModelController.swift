@@ -19,10 +19,5 @@ struct ResourcesModelController {
         FormulaResource(title: "SAP Volume Calculation", image: UIImage(named: "SAPVolumeCalc")),
         ]
     }
-//        ["Standard Assessment Procedure Heat Transfer Formula" : UIImage(named: "SAPCalcFormula")],
-//        ["SAP Calculation Worksheet" : UIImage(named: "SAPCalculationWorksheet")],
-//        ["SAP Collector Parameters" : UIImage(named: "SAPCollectorParameters")],
-//        ["SAP Collector Position" : UIImage(named: "SAPCollectorPosition")],
-//        ["SAP Volume Calculation" : UIImage(named: "SAPVolumeCalc")]
-//    ]
+
 

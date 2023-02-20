@@ -15,9 +15,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="arA-RT-CR9">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="103"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYq-bf-kFD">
+                                    <rect key="frame" x="18" y="5" width="357" height="93"/>
+                                    <string key="text">The formula to determine heat transfer in this direct solar thermal system is from the Standard Assessment Procedure. Explore the documentation below to understand how the simulation was calculated.</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVo-GR-pfE">
+                                    <rect key="frame" x="8" y="101" width="377" height="2"/>
+                                    <color key="backgroundColor" red="0.80000000000000004" green="0.16078431369999999" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="2" id="PPg-US-K60"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="nYq-bf-kFD" firstAttribute="leading" secondItem="arA-RT-CR9" secondAttribute="leading" constant="18" id="20B-h2-wvB"/>
+                                <constraint firstAttribute="bottom" secondItem="nYq-bf-kFD" secondAttribute="bottom" constant="5" id="4XD-ML-Ey3"/>
+                                <constraint firstItem="gVo-GR-pfE" firstAttribute="leading" secondItem="arA-RT-CR9" secondAttribute="leading" constant="8" id="8RS-Lm-q7O"/>
+                                <constraint firstItem="nYq-bf-kFD" firstAttribute="centerX" secondItem="arA-RT-CR9" secondAttribute="centerX" id="Hub-Jb-EI8"/>
+                                <constraint firstItem="nYq-bf-kFD" firstAttribute="top" secondItem="arA-RT-CR9" secondAttribute="top" constant="5" id="Ljl-wW-CgD"/>
+                                <constraint firstAttribute="trailing" secondItem="gVo-GR-pfE" secondAttribute="trailing" constant="8" id="OXO-Th-KYv"/>
+                                <constraint firstAttribute="trailing" secondItem="nYq-bf-kFD" secondAttribute="trailing" constant="18" id="dju-5k-s5y"/>
+                                <constraint firstAttribute="bottom" secondItem="gVo-GR-pfE" secondAttribute="bottom" id="fdP-a1-07M"/>
+                                <constraint firstItem="nYq-bf-kFD" firstAttribute="centerY" secondItem="arA-RT-CR9" secondAttribute="centerY" id="iCv-9A-aUE"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="resourceCell" textLabel="4c1-4J-Lmt" style="IBUITableViewCellStyleDefault" id="zRD-sl-Kea">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="153" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zRD-sl-Kea" id="mye-qG-r2u">
                                     <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="43.666667938232422"/>
@@ -39,11 +71,11 @@
                             <outlet property="delegate" destination="TJW-64-9uv" id="ZIC-C1-3Bd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Oqy-0n-Tuc"/>
+                    <navigationItem key="navigationItem" title="Resources" id="Oqy-0n-Tuc"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjs-aT-wzG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1694" y="542"/>
+            <point key="canvasLocation" x="1693.8931297709923" y="541.54929577464793"/>
         </scene>
         <!--Resources-->
         <scene sceneID="b5K-w4-AWI">
