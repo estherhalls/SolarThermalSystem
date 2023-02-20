@@ -11,21 +11,55 @@
         <!--Resources-->
         <scene sceneID="6YC-wN-lXK">
             <objects>
-                <viewController id="gwg-J0-i1Q" sceneMemberID="viewController">
+                <viewController id="gwg-J0-i1Q" customClass="ResourcesViewController" customModule="SolarThermalSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XVS-OE-3Op">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nSF-yZ-jUc">
-                                <rect key="frame" x="76" y="147" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nSF-yZ-jUc">
+                                <rect key="frame" x="15" y="128" width="363" height="675"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="collectorParametersCell" id="yc8-WC-IbC">
+                                        <rect key="frame" x="0.0" y="50" width="363" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yc8-WC-IbC" id="SzX-jo-rDq">
+                                            <rect key="frame" x="0.0" y="0.0" width="363" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="annualRadiationCell" id="Rf5-cc-mxy">
+                                        <rect key="frame" x="0.0" y="93.666667938232422" width="363" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rf5-cc-mxy" id="Ypa-ln-5wN">
+                                            <rect key="frame" x="0.0" y="0.0" width="363" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="overshadingCell" id="hFS-H4-ExK">
+                                        <rect key="frame" x="0.0" y="137.33333587646484" width="363" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hFS-H4-ExK" id="pnN-ZY-1NF">
+                                            <rect key="frame" x="0.0" y="0.0" width="363" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1vr-pa-BSP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1vr-pa-BSP" firstAttribute="bottom" secondItem="nSF-yZ-jUc" secondAttribute="bottom" constant="15" id="8yc-Yc-uXK"/>
+                            <constraint firstItem="nSF-yZ-jUc" firstAttribute="leading" secondItem="1vr-pa-BSP" secondAttribute="leading" constant="15" id="FTz-qV-y7M"/>
+                            <constraint firstItem="1vr-pa-BSP" firstAttribute="trailing" secondItem="nSF-yZ-jUc" secondAttribute="trailing" constant="15" id="jEM-Uc-20Y"/>
+                            <constraint firstItem="nSF-yZ-jUc" firstAttribute="top" secondItem="1vr-pa-BSP" secondAttribute="top" constant="25" id="nP7-x1-fmc"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Resources" id="3IW-p9-34q"/>
+                    <connections>
+                        <outlet property="resourcesTableView" destination="nSF-yZ-jUc" id="CZG-rx-6VY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dm4-sH-soY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

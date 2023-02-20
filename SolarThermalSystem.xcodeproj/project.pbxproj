@@ -17,6 +17,11 @@
 		EB769C21299EE4B90094CDD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C1F299EE4B90094CDD0 /* LaunchScreen.storyboard */; };
 		EB769C2D29A00A7E0094CDD0 /* FormulaResources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */; };
 		EB769C2F29A00AA40094CDD0 /* Simulator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */; };
+		EBE875AC29A315C200771419 /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE875AB29A315C200771419 /* ResourcesViewController.swift */; };
+		EBE875AE29A3160800771419 /* ResourcesModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE875AD29A3160800771419 /* ResourcesModelController.swift */; };
+		EBE875B029A3249D00771419 /* CollectorParametersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE875AF29A3249D00771419 /* CollectorParametersTableViewCell.swift */; };
+		EBE875B329A324CF00771419 /* CollectorPositionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE875B229A324CF00771419 /* CollectorPositionTableViewCell.swift */; };
+		EBE875B529A324E100771419 /* OvershadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE875B429A324E100771419 /* OvershadingTableViewCell.swift */; };
 		EBF6E58F29A2D73700324EF3 /* UnitConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF6E58E29A2D73700324EF3 /* UnitConversion.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +38,11 @@
 		EB769C22299EE4B90094CDD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB769C2C29A00A7E0094CDD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SolarThermalSystem/Base.lproj/FormulaResources.storyboard; sourceTree = "<group>"; };
 		EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Simulator.storyboard; sourceTree = "<group>"; };
+		EBE875AB29A315C200771419 /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
+		EBE875AD29A3160800771419 /* ResourcesModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesModelController.swift; sourceTree = "<group>"; };
+		EBE875AF29A3249D00771419 /* CollectorParametersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectorParametersTableViewCell.swift; sourceTree = "<group>"; };
+		EBE875B229A324CF00771419 /* CollectorPositionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectorPositionTableViewCell.swift; sourceTree = "<group>"; };
+		EBE875B429A324E100771419 /* OvershadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvershadingTableViewCell.swift; sourceTree = "<group>"; };
 		EBF6E58E29A2D73700324EF3 /* UnitConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +71,9 @@
 			isa = PBXGroup;
 			children = (
 				EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */,
+				EBE875AB29A315C200771419 /* ResourcesViewController.swift */,
+				EBE875AD29A3160800771419 /* ResourcesModelController.swift */,
+				EBE875B129A324A500771419 /* Custom Cells */,
 			);
 			path = "Formula Resources";
 			sourceTree = "<group>";
@@ -112,6 +125,16 @@
 				EB769C22299EE4B90094CDD0 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		EBE875B129A324A500771419 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EBE875AF29A3249D00771419 /* CollectorParametersTableViewCell.swift */,
+				EBE875B229A324CF00771419 /* CollectorPositionTableViewCell.swift */,
+				EBE875B429A324E100771419 /* OvershadingTableViewCell.swift */,
+			);
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		EBF6E59029A2D73C00324EF3 /* Extensions */ = {
@@ -196,9 +219,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB769C15299EE4B70094CDD0 /* AppDelegate.swift in Sources */,
+				EBE875AE29A3160800771419 /* ResourcesModelController.swift in Sources */,
 				EB347AF429A1863D004E2CDD /* SimulatorModelController.swift in Sources */,
 				EB769C17299EE4B70094CDD0 /* SceneDelegate.swift in Sources */,
+				EBE875AC29A315C200771419 /* ResourcesViewController.swift in Sources */,
 				EB347AF129A01F98004E2CDD /* SimulatorViewController.swift in Sources */,
+				EBE875B529A324E100771419 /* OvershadingTableViewCell.swift in Sources */,
+				EBE875B329A324CF00771419 /* CollectorPositionTableViewCell.swift in Sources */,
+				EBE875B029A3249D00771419 /* CollectorParametersTableViewCell.swift in Sources */,
 				EB347AF829A1964C004E2CDD /* SystemDataSource.swift in Sources */,
 				EBF6E58F29A2D73700324EF3 /* UnitConversion.swift in Sources */,
 			);
