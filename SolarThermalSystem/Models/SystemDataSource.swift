@@ -6,8 +6,8 @@
 //
 
 import Foundation
+
 struct SystemDataSource {
-    
     // Collector Parameters: Type, Efficiency, Linear Heat Loss Coefficient, Ratio of Aperture Area to Gross Area
     let collectorParametersCalc = [
         ["Collector Type", "Zero-loss Collector Efficiency", "Linear Heat Loss Coefficient", "Ratio of Aperture Area to Gross Area"],

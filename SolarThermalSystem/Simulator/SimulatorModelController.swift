@@ -45,27 +45,29 @@ class SimulatorModelController {
     
     func setCollectorTilt(with index: Int) {
         collectorTiltIndex = index
-        print(collectorTiltIndex!)
+        print("Collector Tilt Index: \(collectorTiltIndex!)")
     }
     
     func setCollectorOrientation(with index: Int) {
         collectorOrientationIndex = index + 1
-        print(collectorOrientationIndex!)
+        print("Collector Orientation Index: \(collectorOrientationIndex!)")
     }
     
     func setOvershadingFactor(with factor: Double) {
         overshadingFactor = factor
-        print(overshadingFactor!)
+        print("Overshading Factor: \(overshadingFactor!)")
     }
     
     func setAnnualRadiation() {
         guard let collectorTiltIndex, let collectorOrientationIndex else { return }
         annualRadiation = (dataSource.annualRadiationCalc[collectorTiltIndex][collectorOrientationIndex] as! Int)
+        print("Annual Solar Radiation per m^2: \(annualRadiation!)")
     }
     
     func setCollectorApertureArea() {
         if let collectorHeight, let collectorWidth, let collectorAreaRatio {
             collectorApertureArea = collectorHeight * collectorWidth * collectorAreaRatio
+            print("Aperture Area of Solar Collector in m^2: \(collectorApertureArea!)")
         }
     }
     
@@ -73,8 +75,7 @@ class SimulatorModelController {
         if let tankVolume, let dailyHotH20 {
             let effectiveSolarVolume = tankVolume * 0.3
             solarStorageVolFactor = 1 + 0.2 * log(effectiveSolarVolume/dailyHotH20)
-        } else {
-            print("Missing Tank or Daily Hot H20 Volume Fields")
+            print("Solar Storage Volume Factor: \(solarStorageVolFactor!)")
         }
     }
     
@@ -88,6 +89,7 @@ class SimulatorModelController {
         } else {
             collectorPerformanceFactor = 0.693 - 0.0108 * performanceRatio
         }
+        print("Collector Performance Factor: \(collectorPerformanceFactor!)")
     }
     
     func prepareFinalFormulaTerms() {

@@ -105,7 +105,7 @@ class SimulatorViewController: UIViewController {
             let action = UIAction(title: "\(tilt)", state: .off) { (action: UIAction) in
                 if let selectedIndex = optionsArray.firstIndex(of: action) {
                     self.viewModel.setCollectorTilt(with: selectedIndex)
-                    print(action.title)
+                    print("Collector Tilt: \(action.title)")
                 }
             }
             // Add new action to the options array
@@ -127,8 +127,7 @@ class SimulatorViewController: UIViewController {
         var optionsArray = [UIAction]()
         
         let orientationData = dataSource.annualRadiationCalc[0]
-        
-//        let orientationArray = orientationData[0]
+
         /// Used array slicing syntax here to set range so that 2D array is set up in a way that can also be displayed on Resources tab
         let directionArray = orientationData[1..<orientationData.count]
         for (index, direction) in directionArray.enumerated() {
@@ -136,7 +135,7 @@ class SimulatorViewController: UIViewController {
             let action = UIAction(title: "\(direction)", state: .off) { (action: UIAction) in
                 if let selectedIndex = optionsArray.firstIndex(of: action) {
                     self.viewModel.setCollectorOrientation(with: selectedIndex)
-                    print(action.title)
+                    print("Collector Orientation: \(action.title)")
                 }
             }
             // Add new action to the options array
@@ -166,7 +165,7 @@ class SimulatorViewController: UIViewController {
                     // Find overshading factor in the 2D array that corresponds with the selected index, then assign the factor to model property for use in future functions
                     let overshadingFactor = self.dataSource.overshadingFactorCalc[selectedIndex][2]
                     self.viewModel.setOvershadingFactor(with: overshadingFactor as! Double)
-                    print("Selected Index: \(selectedIndex), \(overshadingFactor)")
+                    print("Overshading: \(action.title)")
                 }
             }
             // Add new action to the options array
@@ -234,12 +233,15 @@ class SimulatorViewController: UIViewController {
         setTextFields()
         // final daily heat transfer and solar input formulas
         viewModel.prepareFinalFormulaTerms()
-        // Case success, populate labels. Case failure, alert to check all fields for data.
+       
         let annualSolarContribution = viewModel.solarInputFormula(viewController: self) ?? 0
         let dailyHeatTransfer = Double(round(annualSolarContribution / 365))
+        
         solarInputLabel.text = "\(annualSolarContribution)"
+        print("Solar Contribution to Thermal System: \(annualSolarContribution)")
         
         dailyHeatTransferLabel.text = "\(dailyHeatTransfer)"
+        print("Daily Heat Transfer: \(dailyHeatTransfer)")
     }
     
 } // End of Class
