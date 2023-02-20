@@ -7,23 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB347AF129A01F98004E2CDD /* SimulatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB347AF029A01F98004E2CDD /* SimulatorViewController.swift */; };
+		EB347AF429A1863D004E2CDD /* SimulatorModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB347AF329A1863D004E2CDD /* SimulatorModelController.swift */; };
+		EB347AF829A1964C004E2CDD /* SystemDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB347AF729A1964C004E2CDD /* SystemDataSource.swift */; };
 		EB769C15299EE4B70094CDD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB769C14299EE4B70094CDD0 /* AppDelegate.swift */; };
 		EB769C17299EE4B70094CDD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB769C16299EE4B70094CDD0 /* SceneDelegate.swift */; };
-		EB769C19299EE4B70094CDD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB769C18299EE4B70094CDD0 /* ViewController.swift */; };
 		EB769C1C299EE4B70094CDD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C1A299EE4B70094CDD0 /* Main.storyboard */; };
 		EB769C1E299EE4B90094CDD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB769C1D299EE4B90094CDD0 /* Assets.xcassets */; };
 		EB769C21299EE4B90094CDD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C1F299EE4B90094CDD0 /* LaunchScreen.storyboard */; };
+		EB769C2D29A00A7E0094CDD0 /* FormulaResources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */; };
+		EB769C2F29A00AA40094CDD0 /* Simulator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */; };
+		EBE875AE29A3160800771419 /* ResourcesModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE875AD29A3160800771419 /* ResourcesModelController.swift */; };
+		EBE875B729A3479D00771419 /* ResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE875B629A3479D00771419 /* ResourcesTableViewController.swift */; };
+		EBE875B929A34DA300771419 /* FormulaResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE875B829A34DA300771419 /* FormulaResource.swift */; };
+		EBF6E58F29A2D73700324EF3 /* UnitConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF6E58E29A2D73700324EF3 /* UnitConversion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB347AF029A01F98004E2CDD /* SimulatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorViewController.swift; sourceTree = "<group>"; };
+		EB347AF329A1863D004E2CDD /* SimulatorModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorModelController.swift; sourceTree = "<group>"; };
+		EB347AF729A1964C004E2CDD /* SystemDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDataSource.swift; sourceTree = "<group>"; };
 		EB769C11299EE4B70094CDD0 /* SolarThermalSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolarThermalSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB769C14299EE4B70094CDD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB769C16299EE4B70094CDD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EB769C18299EE4B70094CDD0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB769C1B299EE4B70094CDD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB769C1D299EE4B90094CDD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB769C20299EE4B90094CDD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB769C22299EE4B90094CDD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB769C2C29A00A7E0094CDD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SolarThermalSystem/Base.lproj/FormulaResources.storyboard; sourceTree = "<group>"; };
+		EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Simulator.storyboard; sourceTree = "<group>"; };
+		EBE875AD29A3160800771419 /* ResourcesModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesModelController.swift; sourceTree = "<group>"; };
+		EBE875B629A3479D00771419 /* ResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTableViewController.swift; sourceTree = "<group>"; };
+		EBE875B829A34DA300771419 /* FormulaResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaResource.swift; sourceTree = "<group>"; };
+		EBF6E58E29A2D73700324EF3 /* UnitConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +53,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB347AEC29A01888004E2CDD /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */,
+				EB347AF029A01F98004E2CDD /* SimulatorViewController.swift */,
+				EB347AF329A1863D004E2CDD /* SimulatorModelController.swift */,
+			);
+			path = Simulator;
+			sourceTree = "<group>";
+		};
+		EB347AED29A01890004E2CDD /* Formula Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */,
+				EBE875B629A3479D00771419 /* ResourcesTableViewController.swift */,
+				EBE875AD29A3160800771419 /* ResourcesModelController.swift */,
+			);
+			path = "Formula Resources";
+			sourceTree = "<group>";
+		};
+		EB347AF229A1847F004E2CDD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EB347AF729A1964C004E2CDD /* SystemDataSource.swift */,
+				EBE875B829A34DA300771419 /* FormulaResource.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		EB769C08299EE4B70094CDD0 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +101,34 @@
 		EB769C13299EE4B70094CDD0 /* SolarThermalSystem */ = {
 			isa = PBXGroup;
 			children = (
+				EB769C1A299EE4B70094CDD0 /* Main.storyboard */,
+				EB347AF229A1847F004E2CDD /* Models */,
+				EB347AEC29A01888004E2CDD /* Simulator */,
+				EB347AED29A01890004E2CDD /* Formula Resources */,
+				EB769C28299EE76A0094CDD0 /* Resources */,
+				EBF6E59029A2D73C00324EF3 /* Extensions */,
+			);
+			path = SolarThermalSystem;
+			sourceTree = "<group>";
+		};
+		EB769C28299EE76A0094CDD0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				EB769C14299EE4B70094CDD0 /* AppDelegate.swift */,
 				EB769C16299EE4B70094CDD0 /* SceneDelegate.swift */,
-				EB769C18299EE4B70094CDD0 /* ViewController.swift */,
-				EB769C1A299EE4B70094CDD0 /* Main.storyboard */,
 				EB769C1D299EE4B90094CDD0 /* Assets.xcassets */,
 				EB769C1F299EE4B90094CDD0 /* LaunchScreen.storyboard */,
 				EB769C22299EE4B90094CDD0 /* Info.plist */,
 			);
-			path = SolarThermalSystem;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EBF6E59029A2D73C00324EF3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EBF6E58E29A2D73700324EF3 /* UnitConversion.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +189,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB769C2F29A00AA40094CDD0 /* Simulator.storyboard in Resources */,
 				EB769C21299EE4B90094CDD0 /* LaunchScreen.storyboard in Resources */,
 				EB769C1E299EE4B90094CDD0 /* Assets.xcassets in Resources */,
 				EB769C1C299EE4B70094CDD0 /* Main.storyboard in Resources */,
+				EB769C2D29A00A7E0094CDD0 /* FormulaResources.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +204,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB769C19299EE4B70094CDD0 /* ViewController.swift in Sources */,
 				EB769C15299EE4B70094CDD0 /* AppDelegate.swift in Sources */,
+				EBE875AE29A3160800771419 /* ResourcesModelController.swift in Sources */,
+				EB347AF429A1863D004E2CDD /* SimulatorModelController.swift in Sources */,
+				EBE875B729A3479D00771419 /* ResourcesTableViewController.swift in Sources */,
 				EB769C17299EE4B70094CDD0 /* SceneDelegate.swift in Sources */,
+				EB347AF129A01F98004E2CDD /* SimulatorViewController.swift in Sources */,
+				EBE875B929A34DA300771419 /* FormulaResource.swift in Sources */,
+				EB347AF829A1964C004E2CDD /* SystemDataSource.swift in Sources */,
+				EBF6E58F29A2D73700324EF3 /* UnitConversion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +233,14 @@
 				EB769C20299EE4B90094CDD0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB769C2C29A00A7E0094CDD0 /* Base */,
+			);
+			name = FormulaResources.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -288,7 +368,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SolarThermalSystem/Info.plist;
+				INFOPLIST_FILE = SolarThermalSystem/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -315,7 +395,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SolarThermalSystem/Info.plist;
+				INFOPLIST_FILE = SolarThermalSystem/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
