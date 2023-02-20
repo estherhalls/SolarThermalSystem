@@ -100,7 +100,6 @@ class SimulatorModelController {
     // MARK: - Solar Contribution Formula
     func solarInputFormula(viewController: UIViewController) -> Double? {
         // Solar Input Formula:  solarInput = collectorRadiation * overshadingFactor * collectorApertureArea * collectorEfficiency * utilizationFactor * collectorPerformanceFactor * solarStorageVolFactor
-        prepareFinalFormulaTerms()
         
         guard let annualRadiation, let overshadingFactor, let collectorApertureArea, let collectorPerformanceFactor, let solarStorageVolFactor else {
             let alertController = UIAlertController(title: "Error", message: "Please Check That All Fields are Complete", preferredStyle: .alert)
@@ -126,11 +125,3 @@ class SimulatorModelController {
     }
     
 } // End of Class
-
-/*
- STC (standard test conditions):
- radiation = 1000 W/m^2
- cellTemp = 25 deg C
- windSpeed = 1m/s
- airMass = 1.5
- */

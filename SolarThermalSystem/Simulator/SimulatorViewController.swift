@@ -55,8 +55,8 @@ class SimulatorViewController: UIViewController {
         setupOvershading()
         
         // Result Labels Initial Values
-        solarInputLabel.text = "0.00"
-        dailyHeatTransferLabel.text = "0.00"
+        solarInputLabel.text = "-"
+        dailyHeatTransferLabel.text = "-"
     }
     
     // MARK: - Methods
@@ -233,8 +233,13 @@ class SimulatorViewController: UIViewController {
         // First assign text fields to global properties
         setTextFields()
         // final daily heat transfer and solar input formulas
+        viewModel.prepareFinalFormulaTerms()
         // Case success, populate labels. Case failure, alert to check all fields for data.
-        self.solarInputLabel.text = "\(viewModel.solarInputFormula(viewController: self) ?? 0)"
+        let annualSolarContribution = viewModel.solarInputFormula(viewController: self) ?? 0
+        let dailyHeatTransfer = Double(round(annualSolarContribution / 365))
+        solarInputLabel.text = "\(annualSolarContribution)"
+        
+        dailyHeatTransferLabel.text = "\(dailyHeatTransfer)"
     }
     
 } // End of Class
