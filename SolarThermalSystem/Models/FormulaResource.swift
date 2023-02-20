@@ -15,5 +15,4 @@ struct FormulaResource {
         self.title = title
         self.image = image
     }
-    
 }

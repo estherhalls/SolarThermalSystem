@@ -66,6 +66,7 @@ class ResourcesTableViewController: UITableViewController {
     }
     
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        // Tap out of image to return to table view
         navigationController?.isNavigationBarHidden = false
         tabBarController?.tabBar.isHidden = false
         
