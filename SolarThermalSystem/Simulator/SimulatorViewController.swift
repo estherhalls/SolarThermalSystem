@@ -53,6 +53,10 @@ class SimulatorViewController: UIViewController {
         setupCollectorTilt()
         setupCollectorOrientation()
         setupOvershading()
+        
+        // Result Labels Initial Values
+        solarInputLabel.text = "0.00"
+        dailyHeatTransferLabel.text = "0.00"
     }
     
     // MARK: - Methods
@@ -72,7 +76,7 @@ class SimulatorViewController: UIViewController {
                     let efficiency = self.dataSource.collectorParametersCalc[selectedIndex][1]
                     let heatLoss = self.dataSource.collectorParametersCalc[selectedIndex][2]
                     let areaRatio = self.dataSource.collectorParametersCalc[selectedIndex][3]
-                    self.viewModel.setCollectorType(with: action.title, efficiency: efficiency as! Double, heatLoss: heatLoss as! Double, areaRatio: areaRatio as! Double)
+                    self.viewModel.setCollectorType(with: action.title, efficiency: efficiency as! Double, heatLoss: heatLoss as! Int, areaRatio: areaRatio as! Double)
                 }
             }
             // Add new action to the options array
@@ -186,6 +190,7 @@ class SimulatorViewController: UIViewController {
             viewModel.collectorHeight = convertedValue
             print(viewModel.collectorHeight!)
         } else {
+            valueErrorAlert()
             print("Missing Height Text Field")
         }
         if let width = collectorWidthTextField.text, let value = Double(width) {
@@ -193,6 +198,7 @@ class SimulatorViewController: UIViewController {
             viewModel.collectorWidth = convertedValue
             print(viewModel.collectorWidth!)
         } else {
+            valueErrorAlert()
             print("Missing Width Text Field")
         }
         if let tank = tankVolumeTextField.text, let value = Double(tank) {
@@ -201,6 +207,7 @@ class SimulatorViewController: UIViewController {
             viewModel.tankVolume = convertedValue
             print(viewModel.tankVolume!)
         } else {
+            valueErrorAlert()
             print("Missing Tank Volume Text Field")
         }
         if let h20Demand = hotWaterDemandTextField.text, let value = Double(h20Demand) {
@@ -209,20 +216,25 @@ class SimulatorViewController: UIViewController {
             viewModel.dailyHotH20 = convertedValue
             print(viewModel.dailyHotH20!)
         } else {
+            valueErrorAlert()
             print("Missing H20 Demand Text Field")
         }
+    }
+    
+    func valueErrorAlert() {
+        let alertController = UIAlertController(title: "Error", message: "One or More Fields Has Invalid Input Value", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Actions
     @IBAction func runSimulationTapped(_ sender: Any) {
         // First assign text fields to global properties
         setTextFields()
-        // Solar Input Formula:  solarInput = collectorRadiation * overshadingFactor * collectorApertureArea * collectorEfficiency * utilizationFactor * collectorPerformanceFactor * solarStorageVolFactor
-        viewModel.prepareFinalFormulaTerms()
-        
-        
         // final daily heat transfer and solar input formulas
         // Case success, populate labels. Case failure, alert to check all fields for data.
+        self.solarInputLabel.text = "\(viewModel.solarInputFormula(viewController: self) ?? 0)"
     }
     
 } // End of Class
