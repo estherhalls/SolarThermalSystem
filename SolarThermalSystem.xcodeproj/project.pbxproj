@@ -17,6 +17,9 @@
 		EB769C21299EE4B90094CDD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C1F299EE4B90094CDD0 /* LaunchScreen.storyboard */; };
 		EB769C2D29A00A7E0094CDD0 /* FormulaResources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */; };
 		EB769C2F29A00AA40094CDD0 /* Simulator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */; };
+		EBE875AE29A3160800771419 /* ResourcesModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE875AD29A3160800771419 /* ResourcesModelController.swift */; };
+		EBE875B729A3479D00771419 /* ResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE875B629A3479D00771419 /* ResourcesTableViewController.swift */; };
+		EBE875B929A34DA300771419 /* FormulaResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE875B829A34DA300771419 /* FormulaResource.swift */; };
 		EBF6E58F29A2D73700324EF3 /* UnitConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF6E58E29A2D73700324EF3 /* UnitConversion.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +36,9 @@
 		EB769C22299EE4B90094CDD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB769C2C29A00A7E0094CDD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SolarThermalSystem/Base.lproj/FormulaResources.storyboard; sourceTree = "<group>"; };
 		EB769C2E29A00AA40094CDD0 /* Simulator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Simulator.storyboard; sourceTree = "<group>"; };
+		EBE875AD29A3160800771419 /* ResourcesModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesModelController.swift; sourceTree = "<group>"; };
+		EBE875B629A3479D00771419 /* ResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTableViewController.swift; sourceTree = "<group>"; };
+		EBE875B829A34DA300771419 /* FormulaResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaResource.swift; sourceTree = "<group>"; };
 		EBF6E58E29A2D73700324EF3 /* UnitConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				EB769C2B29A00A7E0094CDD0 /* FormulaResources.storyboard */,
+				EBE875B629A3479D00771419 /* ResourcesTableViewController.swift */,
+				EBE875AD29A3160800771419 /* ResourcesModelController.swift */,
 			);
 			path = "Formula Resources";
 			sourceTree = "<group>";
@@ -69,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				EB347AF729A1964C004E2CDD /* SystemDataSource.swift */,
+				EBE875B829A34DA300771419 /* FormulaResource.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -196,9 +205,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB769C15299EE4B70094CDD0 /* AppDelegate.swift in Sources */,
+				EBE875AE29A3160800771419 /* ResourcesModelController.swift in Sources */,
 				EB347AF429A1863D004E2CDD /* SimulatorModelController.swift in Sources */,
+				EBE875B729A3479D00771419 /* ResourcesTableViewController.swift in Sources */,
 				EB769C17299EE4B70094CDD0 /* SceneDelegate.swift in Sources */,
 				EB347AF129A01F98004E2CDD /* SimulatorViewController.swift in Sources */,
+				EBE875B929A34DA300771419 /* FormulaResource.swift in Sources */,
 				EB347AF829A1964C004E2CDD /* SystemDataSource.swift in Sources */,
 				EBF6E58F29A2D73700324EF3 /* UnitConversion.swift in Sources */,
 			);
